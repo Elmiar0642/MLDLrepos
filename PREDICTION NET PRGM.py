@@ -32,13 +32,14 @@ print(X)
 input()
 X_lately = X[-forecast_out:]
 X = X[:-forecast_out]
-print(X)
+print(X,X.shape)
 input()
 
 df.dropna(inplace=True)
 
 y = np.array(df['label'])
-
+print(y,y.shape)
+input()
 X_train, X_test, y_train, y_test = TTS(X, y, test_size=0.80)
 
 for k in ['linear','poly','rbf','sigmoid']:
@@ -50,7 +51,8 @@ for k in ['linear','poly','rbf','sigmoid']:
     #clf=pickle.load(pickle_in)
     
     forecast_set1 = clf1.predict(X_lately)
-
+    print(forecast_set1,X_lately)
+'''
     df['Forecast'] = np.nan
 
     last_date = df.iloc[-1].name
@@ -95,3 +97,4 @@ plt.legend(loc=4)
 plt.xlabel('Date')
 plt.ylabel('Price')
 plt.show()
+'''
